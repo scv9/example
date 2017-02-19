@@ -1,0 +1,10 @@
+<h2>Sign up</h2>
+<form (ngSubmit)="register()">
+    <div>
+    <label>Username</label><input name="username" [(ngModel)]="user.username" required minlength="3">
+    </div>
+    <div>
+    <label>Password</label><input type="password" name="password" [(ngModel)]= "user.password" required>
+    </div>
+    <button type="submit">Register</button>
+</form>
