@@ -9,11 +9,10 @@ import {AuthService} from "./auth/auth.service";
 
 })
 export class AppComponent {
-  constructor(private authService : AuthService){}
+  constructor(){}
 
-  list(){
-    return this.authService.list();
-  }
+  public static baseURL : string = "http://localhost:8080/";
+
   title = 'app works!';
 
 }

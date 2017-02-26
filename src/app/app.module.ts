@@ -1,44 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
-import {ApiService} from "./api.service";
 import {AuthService} from "./auth/auth.service";
-import { RegistrationComponent } from './auth/registration/registration.component';
-import { LoginComponent } from './auth/login/login.component';
 import {ROUTES} from "./app.routes";
 import {RouterModule} from "@angular/router";
 import { HomePageComponent } from './home-page/home-page.component';
-import { HeaderComponent } from './common/header/header.component';
-import { FooterComponent } from './common/footer/footer.component';
-import { NavigationComponent } from './common/navigation/navigation.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthGuard} from "./auth/auth.guard";
+import {AuthModule} from "./auth/auth.module";
+import {MaterialModule} from "@angular/material";
+import {FormsModule} from "@angular/forms";
+import {DialogComponent} from "./temp/dialog/dialog.component";
+import {AppCommonsModule} from "./commons/app-commons.module";
+import {NavigationModule} from "./navigation/navigation.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    RegistrationComponent,
-    LoginComponent,
     HomePageComponent,
-    HeaderComponent,
-    FooterComponent,
-    NavigationComponent
+    DialogComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
     RouterModule.forRoot(ROUTES),
-    NgbModule.forRoot()
+    MaterialModule,
+    FormsModule,
+    AuthModule,
+    NavigationModule,
+    AppCommonsModule
+
   ],
   providers: [
     AuthService,
-    ApiService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

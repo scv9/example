@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {RegistrationUser} from "./registration.model";
+import { Component } from '@angular/core';
+import {User} from "../user.model";
 
 
 
@@ -9,9 +9,19 @@ import {RegistrationUser} from "./registration.model";
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-  user = new RegistrationUser();
+
+  constructor(){
+  }
+
+
+  onFocusOut(event: any){
+    console.log(`${JSON.stringify(event)}`);
+    console.log(`${event.target}`);
+    console.log(`${JSON.stringify(event.target.value)}`);
+  }
+
   register() {
-    console.log(this.user);
+    console.log("123");
   }
 }
 

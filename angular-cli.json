@@ -19,7 +19,7 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "./libs/bootstrap/css/bootstrap.min.css"
+        "reports-app-theme.scss"
       ],
       "scripts": [],
       "environments": {
