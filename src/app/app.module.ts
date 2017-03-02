@@ -13,12 +13,15 @@ import {FormsModule} from "@angular/forms";
 import {DialogComponent} from "./temp/dialog/dialog.component";
 import {AppCommonsModule} from "./commons/app-commons.module";
 import {NavigationModule} from "./navigation/navigation.module";
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {AuthHttp, JwtHelper} from "angular2-jwt";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    DialogComponent
+    DialogComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -27,13 +30,14 @@ import {NavigationModule} from "./navigation/navigation.module";
     FormsModule,
     AuthModule,
     NavigationModule,
-    AppCommonsModule
+    AppCommonsModule,
 
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    JwtHelper
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

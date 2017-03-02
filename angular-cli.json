@@ -18,8 +18,8 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
-        "reports-app-theme.scss"
+      "../node_modules/material-design-lite/material.min.css",
+        "styles.css"
       ],
       "scripts": [],
       "environments": {

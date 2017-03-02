@@ -1,6 +1,5 @@
-export class User  {
+export class User {
   username: string;
-  isAuthenticated : boolean = false;
+  roles: Array<string>;
   token: string;
-
 }

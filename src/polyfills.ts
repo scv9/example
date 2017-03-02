@@ -20,6 +20,8 @@ import 'zone.js/dist/zone';
 
 import 'hammerjs/hammer';
 
+import 'material-design-lite/material.min';
+
 // If you need to support the browsers/features below, uncomment the import
 // and run `npm install import-name-here';
 // Learn more in https://angular.io/docs/ts/latest/guide/browser-support.html

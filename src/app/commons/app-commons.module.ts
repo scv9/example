@@ -9,7 +9,7 @@ import {MaterialModule} from "@angular/material";
   imports: [
     CommonModule,
     NavigationModule,
-    MaterialModule
+    MaterialModule,
   ],
   declarations: [HeaderComponent, FooterComponent],
   exports: [HeaderComponent, FooterComponent]
