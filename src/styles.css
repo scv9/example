@@ -24,10 +24,6 @@ a img{
   border: 0px;
 }
 
-.reports-content{
-  min-height: 100%;
-}
-
 ::-moz-selection {
   background-color: #6ab344;
   color: #fff;

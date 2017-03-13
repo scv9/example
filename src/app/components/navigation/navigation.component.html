@@ -1,0 +1,56 @@
+<header class="demo-drawer-header">
+  <img src="../images/user.jpg" class="demo-avatar">
+  <div class="demo-avatar-dropdown">
+    <!--<span>hello@example.com</span>-->
+    <span>{{userService.user.username}}</span>
+    <div class="mdl-layout-spacer"></div>
+    <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+      <i class="material-icons" role="presentation">arrow_drop_down</i>
+      <span class="visuallyhidden">Accounts</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+      <li class="mdl-menu__item">hello@example.com</li>
+      <li class="mdl-menu__item">info@example.com</li>
+      <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+    </ul>
+  </div>
+</header>
+
+<!-- If user is Authenticated -->
+<nav class="mdl-navigation" *ngIf="userService.isAuthenticated()">
+  <a class="mdl-navigation__link" [routerLink]="['']">Home</a>
+  <a class="mdl-navigation__link" [routerLink]="['dashboard']">Dashboard</a>
+  <a class="mdl-navigation__link" href="">Users</a>
+  <a class="mdl-navigation__link" href="">Orders</a>
+  <a class="mdl-navigation__link" href="">Auto</a>
+  <a class="mdl-navigation__link" href="">One</a>
+  <a class="mdl-navigation__link" href="">Play</a>
+</nav>
+
+
+<!-- If user is NOT Authenticated -->
+<nav class="mdl-navigation" *ngIf="!userService.isAuthenticated()">
+  <a class="mdl-navigation__link" [routerLink]="['']">Home</a>
+  <a class="mdl-navigation__link" [routerLink]="['dashboard']">Dashboard</a>
+  <a class="mdl-navigation__link" href="">Wear</a>
+  <a class="mdl-navigation__link" href="">TV</a>
+  <a class="mdl-navigation__link" href="">Auto</a>
+  <a class="mdl-navigation__link" href="">One</a>
+  <a class="mdl-navigation__link" href="">Play</a>
+  <div class="android-drawer-separator"></div>
+  <span class="mdl-navigation__link" href="">Versions</span>
+  <a class="mdl-navigation__link" href="">Lollipop 5.0</a>
+  <a class="mdl-navigation__link" href="">KitKat 4.4</a>
+  <a class="mdl-navigation__link" href="">Jelly Bean 4.3</a>
+  <a class="mdl-navigation__link" href="">Android history</a>
+  <div class="android-drawer-separator"></div>
+  <span class="mdl-navigation__link" href="">Resources</span>
+  <a class="mdl-navigation__link" href="">Official blog</a>
+  <a class="mdl-navigation__link" href="">Android on Google+</a>
+  <a class="mdl-navigation__link" href="">Android on Twitter</a>
+  <div class="android-drawer-separator"></div>
+  <span class="mdl-navigation__link" href="">For developers</span>
+  <a class="mdl-navigation__link" href="">App developer resources</a>
+  <a class="mdl-navigation__link" href="">Android Open Source Project</a>
+  <a class="mdl-navigation__link" href="">Android SDK</a>
+</nav>
