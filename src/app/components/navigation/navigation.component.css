@@ -1,12 +1,12 @@
-.demo-avatar {
+.reports-avatar {
   width: 48px;
   height: 48px;
   border-radius: 24px;
 }
-.demo-layout .mdl-layout__header .mdl-layout__drawer-button {
+.reports-layout .mdl-layout__header .mdl-layout__drawer-button {
   color: rgba(0, 0, 0, 0.54);
 }
-.demo-drawer-header {
+.reports-drawer-header {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
   height: 151px;
   background-color: #6ab344;
 }
-.demo-avatar-dropdown {
+.reports-avatar-dropdown {
   display: flex;
   position: relative;
   flex-direction: row;
