@@ -1,4 +1,4 @@
-import {Injectable, Injector, EventEmitter} from "@angular/core";
+import {Injectable, EventEmitter} from "@angular/core";
 import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs/Rx"
 
@@ -6,9 +6,7 @@ import {Observable} from "rxjs/Rx"
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Commons} from "../components/commons/commons";
-import {TokenUtil} from "../components/commons/tokenUtil";
-import {UserService} from "./user.service";
-import {AuthHttp} from "angular2-jwt";
+import {TokenUtil} from "../components/commons/Utils/tokenUtil";
 /**
  * Created by scv9 on 18.02.2017.
  */

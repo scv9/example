@@ -1,6 +1,5 @@
 import {Injectable, EventEmitter} from "@angular/core";
 import {JwtHelper} from "angular2-jwt";
-import {AuthService} from "../components/auth/auth.service";
 /**
  * Created by scv9 on 02.03.2017.
  */

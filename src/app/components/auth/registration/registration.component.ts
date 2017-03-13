@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class RegistrationComponent {
 
+  // ToDo: Create Registration Component
   constructor(){
     console.log(`Constructing RegistrationComponent`);
   }

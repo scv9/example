@@ -3,16 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {AuthService} from "./service/auth.service";
-import {ROUTES} from "./app.routes";
+import {ROUTES} from "./Routes/app.routes";
 import {RouterModule} from "@angular/router";
 import { HomePageComponent } from './components/home-page/home-page.component';
-import {AuthGuard} from "./components/auth/auth.guard";
+import {AuthGuard} from "./Guards/auth.guard";
 import {AuthModule} from "./components/auth/auth.module";
 import {AppCommonsModule} from "./components/commons/app-commons.module";
 import {NavigationModule} from "./components/navigation/navigation.module";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {JwtHelper} from "angular2-jwt";
-import {TokenUtil} from "./components/commons/tokenUtil";
+import {TokenUtil} from "./components/commons/Utils/tokenUtil";
 
 @NgModule({
   declarations: [

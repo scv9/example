@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from "../../../service/auth.service";
 import {Observable} from "rxjs";
 import {FormBuilder, FormGroup, FormControl, Validators} from "@angular/forms";

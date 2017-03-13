@@ -4,9 +4,8 @@
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
 import {Observable} from "rxjs";
 import {Injectable, Injector} from "@angular/core";
-import {UserService} from "../../service/user.service";
-import {TokenUtil} from "../commons/tokenUtil";
-import {AuthService} from "../../service/auth.service";
+import {UserService} from "../service/user.service";
+import {TokenUtil} from "../components/commons/Utils/tokenUtil";
 
 @Injectable()
 export class AuthGuard implements CanActivate{
@@ -18,6 +17,7 @@ export class AuthGuard implements CanActivate{
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {
     console.log("We are in canActivate");
     console.log(route.toString());
+    // ToDo: Realise according to new Approach
     // if(this.tokenUtil.isTokenProvided()) {
     //   console.log('Token Provided');
     //   if(!this.tokenUtil.jwtHelper.isTokenExpired(this.tokenUtil.token) && !this.userService.isAuthenticated()){
