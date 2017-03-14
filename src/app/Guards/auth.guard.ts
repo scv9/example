@@ -3,7 +3,7 @@
  */
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
 import {Observable} from "rxjs";
-import {Injectable, Injector} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {UserService} from "../service/user.service";
 import {TokenUtil} from "../components/commons/Utils/tokenUtil";
 

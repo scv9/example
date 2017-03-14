@@ -16,6 +16,9 @@ export class AuthService{
 
   private loginURL = Commons.baseURL + "auth";
   private userDetailsURL = Commons.baseURL + "user";
+
+  private orgURL = Commons.baseURL + "user/organizations";
+
   private logoutURL = Commons.baseURL + "ToDo";
   private registerURL = Commons.baseURL + "ToDo";
 
@@ -25,7 +28,10 @@ export class AuthService{
   constructor(private http:Http, private tokenUtil:TokenUtil){
     console.log(`Constructing AuthService`);
     this.auth$ = new EventEmitter();
-    this.tokenUtil.token$.subscribe(token=>this.authenticateByToken$(token).subscribe());
+    this.tokenUtil.token$.subscribe(token=>{
+      this.authenticateByToken$(token).subscribe();
+      this.getOrgdata(token).subscribe()
+    });
     this.tokenUtil.setToken(localStorage.getItem('token'));
   }
 
@@ -51,6 +57,21 @@ export class AuthService{
       .map((response:Response) => {
         console.log(`authenticateByToken Success`);
         this.auth$.emit(response.json());
+      })
+      //...errors if any
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  getOrgdata(token:string){
+    let headers = new Headers();
+    headers.append('Authorization', `${token}`);
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.orgURL, options)// ...and calling .json() on the response to return data
+      .map((response:Response) => {
+        console.log(`ORG DATA`);
+        console.log(response.json());
+        //this.auth$.emit(response.json());
       })
       //...errors if any
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));

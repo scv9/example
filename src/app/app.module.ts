@@ -13,12 +13,14 @@ import {NavigationModule} from "./components/navigation/navigation.module";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {JwtHelper} from "angular2-jwt";
 import {TokenUtil} from "./components/commons/Utils/tokenUtil";
+import { ListAdapterComponent } from './components/list-adapter/list-adapter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    DashboardComponent
+    DashboardComponent,
+    ListAdapterComponent
   ],
   imports: [
     BrowserModule,
