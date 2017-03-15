@@ -1,23 +1,26 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../services/auth.service";
 import {Observable} from "rxjs";
 import {FormBuilder, FormGroup, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {LoggingService} from "../../../services/logging.service";
+import {TokenUtil} from "../../commons/utils/tokenUtil";
 
 @Component({
   selector: 'app-login',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css']
 })
-export class LoginComponent{
+export class LoginComponent implements OnInit{
 
   usernameCtrl: FormControl;
   passwordCtrl: FormControl;
   userForm: FormGroup;
   err: string;
 
-  constructor(private authService:AuthService, fb: FormBuilder, private router:Router) {
-    console.log(`Constructing LoginComponent`);
+  constructor(private loggingService:LoggingService, private authService:AuthService, fb: FormBuilder, private router:Router, private tokenUtil:TokenUtil) {
+
+    this.loggingService["info"](["LoginComponent Constructed"]);
 
     this.usernameCtrl = fb.control('', [Validators.required, Validators.minLength(3)]);
     this.passwordCtrl = fb.control('', [Validators.required, Validators.minLength(3)]);
@@ -25,6 +28,10 @@ export class LoginComponent{
       username: this.usernameCtrl,
       password: this.passwordCtrl
     });
+  }
+
+  ngOnInit(): void {
+    this.loggingService["info"](["LoginComponent Initialized"]);
   }
 
   reset() {
@@ -40,8 +47,9 @@ export class LoginComponent{
 
     authenticate$.subscribe(
       success => {
+        console.log(`authenticate$ SUCCESS`);
+        this.tokenUtil.setToken(success.token);
         this.router.navigate(["dashboard"]);
-        console.log(`Login SUCCESS`);
       },
       err => {
         this.err = err;

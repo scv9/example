@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 export class LoggingService {
 
   constructor() {
-    console.log("Logging Service Created")
+    console.log("Logging Service Created");
   }
 
   public error(args: any[]): void {

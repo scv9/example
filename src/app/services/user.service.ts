@@ -5,6 +5,7 @@ import {Commons} from "../components/commons/commons";
 import {AuthHttp} from "angular2-jwt";
 import {Response} from "@angular/http";
 import {Observable} from "rxjs";
+import {LoggingService} from "./logging.service";
 
 @Injectable()
 export class UserService {
@@ -16,8 +17,9 @@ export class UserService {
 
   emitter : EventEmitter<User> = new EventEmitter();
 
-  constructor(private authService:AuthService, private injector:Injector){
-    console.log(`Constructing UserService`);
+  constructor(private loggingService:LoggingService, private authService:AuthService, private injector:Injector){
+
+    this.loggingService["info"](["UserService Constructed"]);
     this.user = new User();
     this.authService.auth$.subscribe(()=>{
       this.http = this.injector.get(AuthHttp);
