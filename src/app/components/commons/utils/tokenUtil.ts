@@ -24,7 +24,6 @@ export class TokenUtil {
   constructor(public jwtHelper: JwtHelper) {
     console.log("Constructing TokenUtil");
     this.token$ = new EventEmitter();
-    //this.setToken(this.token);
   }
 
   /**
@@ -39,8 +38,8 @@ export class TokenUtil {
     console.log("Setting token...");
     if (token){
       localStorage.setItem('token', token);
-      this.token$.emit(token);
       console.log(`Token set ${token}`);
+      this.token$.emit(token);
     }else{
       console.log("Token is not set");
     }

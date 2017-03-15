@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../services/auth.service";
 import {Observable} from "rxjs";
 import {FormBuilder, FormGroup, FormControl, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
 import {LoggingService} from "../../../services/logging.service";
 import {TokenUtil} from "../../commons/utils/tokenUtil";
 
@@ -13,13 +12,16 @@ import {TokenUtil} from "../../commons/utils/tokenUtil";
 })
 export class LoginComponent implements OnInit{
 
+
+  authenticate$:Observable<any>;
+  authenticateByToken$:Observable<any>;
+
   usernameCtrl: FormControl;
   passwordCtrl: FormControl;
   userForm: FormGroup;
   err: string;
 
-  constructor(private loggingService:LoggingService, private authService:AuthService, fb: FormBuilder, private router:Router, private tokenUtil:TokenUtil) {
-
+  constructor(private loggingService:LoggingService, private authService:AuthService, fb: FormBuilder, private tokenUtil:TokenUtil) {
     this.loggingService["info"](["LoginComponent Constructed"]);
 
     this.usernameCtrl = fb.control('', [Validators.required, Validators.minLength(3)]);
@@ -40,21 +42,16 @@ export class LoginComponent implements OnInit{
   }
 
   login() {
-    console.log(`Try to login with credentials ${JSON.stringify(this.userForm.value)}`);
-    let authenticate$:Observable<any>;
-
-    authenticate$ = this.authService.authenticate$(this.userForm.value);
-
-    authenticate$.subscribe(
+    this.authenticate$ = this.authService.authenticate$(this.userForm.value);
+    this.authenticate$.subscribe(
       success => {
-        console.log(`authenticate$ SUCCESS`);
+        this.loggingService["info"](["Credentials Authentication SUCCESS", this.userForm.value]);
         this.tokenUtil.setToken(success.token);
-        this.router.navigate(["dashboard"]);
       },
       err => {
         this.err = err;
         // Log errors if any
-        console.log(err);
+        this.loggingService["error"](["LoginComponent Error:", err]);
       });
   }
 

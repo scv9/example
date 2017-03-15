@@ -1,4 +1,4 @@
-import {Injectable, EventEmitter} from "@angular/core";
+import {Injectable, EventEmitter, OnInit} from "@angular/core";
 import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs/Rx"
 
@@ -21,13 +21,13 @@ export class AuthService{
   private logoutURL = Commons.baseURL + "login?logout";
   auth$:EventEmitter<any>;
 
-  constructor(private loggingService:LoggingService, private http:Http, private tokenUtil:TokenUtil){
+  constructor(private loggingService:LoggingService, private http:Http, public tokenUtil:TokenUtil){
     this.loggingService["info"](["AuthService Constructed"]);
     this.auth$ = new EventEmitter();
     this.tokenUtil.token$.subscribe(token=>{
       this.authenticateByToken$(token).subscribe(response => this.auth$.emit(response.statusText));
     });
-    this.tokenUtil.setToken(localStorage.getItem('token'));
+
   }
 
   authenticate$(credentials: any){
@@ -37,20 +37,19 @@ export class AuthService{
         return response.json();
       })
       //...errors if any
-      .catch((error:any) => Observable.throw(error || 'Server error'));
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   authenticateByToken$(token:string){
-    console.log(`Try authenticateByToken: ${token}`);
+    this.loggingService["info"](["Try authenticateByToken: ", token]);
 
     return this.http.post(this.jwtTokenAuthUrl, token)// ...and calling .json() on the response to return data
       .map((response:Response) => {
-        console.log(`authenticateByToken Success`);
-        console.log(response);
+        this.loggingService["info"](["Token Authentication SUCCESS"]);
         return response;
       })
       //...errors if any
-      .catch((error:any) => Observable.throw(error || 'Server error'));
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   logout(){
