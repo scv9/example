@@ -30,8 +30,8 @@
     <i class="material-icons">more_vert</i>
   </button>
   <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
-    <li *ngIf="!userService.isAuthenticated()" class="mdl-menu__item" [routerLink]="['login']">Sign In</li>
-    <li *ngIf="!userService.isAuthenticated()" class="mdl-menu__item" [routerLink]="['login']">Sign Up</li>
-    <li *ngIf="userService.isAuthenticated()" class="mdl-menu__item" (click)="userService.logout()">Logout</li>
+    <li *ngIf="!userService.isLoggedIn" class="mdl-menu__item" [routerLink]="['login']">Sign In</li>
+    <li *ngIf="!userService.isLoggedIn" class="mdl-menu__item" [routerLink]="['login']">Sign Up</li>
+    <li *ngIf="userService.isLoggedIn" class="mdl-menu__item" (click)="userService.logout()">Logout</li>
   </ul>
 </div>

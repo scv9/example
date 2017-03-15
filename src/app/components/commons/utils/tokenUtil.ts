@@ -24,7 +24,7 @@ export class TokenUtil {
   constructor(public jwtHelper: JwtHelper) {
     console.log("Constructing TokenUtil");
     this.token$ = new EventEmitter();
-    this.setToken(this.token);
+    //this.setToken(this.token);
   }
 
   /**

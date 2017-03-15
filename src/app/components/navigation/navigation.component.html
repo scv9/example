@@ -17,7 +17,7 @@
 </header>
 
 <!-- If user is Authenticated -->
-<nav class="mdl-navigation" *ngIf="userService.isAuthenticated()">
+<nav class="mdl-navigation" *ngIf="userService.isLoggedIn">
   <a class="mdl-navigation__link" [routerLink]="['']">Home</a>
   <a class="mdl-navigation__link" [routerLink]="['dashboard']">Dashboard</a>
   <a class="mdl-navigation__link" href="">Users</a>
@@ -29,7 +29,7 @@
 
 
 <!-- If user is NOT Authenticated -->
-<nav class="mdl-navigation" *ngIf="!userService.isAuthenticated()">
+<nav class="mdl-navigation" *ngIf="!userService.isLoggedIn">
   <a class="mdl-navigation__link" [routerLink]="['']">Home</a>
   <a class="mdl-navigation__link" [routerLink]="['dashboard']">Dashboard</a>
   <a class="mdl-navigation__link" href="">Wear</a>
