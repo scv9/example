@@ -12,7 +12,7 @@ import {AppCommonsModule} from "./components/commons/app-commons.module";
 import {NavigationModule} from "./components/navigation/navigation.module";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {JwtHelper} from "angular2-jwt";
-import {TokenUtil} from "./components/commons/Utils/tokenUtil";
+import {TokenUtil} from "./components/commons/utils/tokenUtil";
 import { ListAdapterComponent } from './components/list-adapter/list-adapter.component';
 
 @NgModule({
