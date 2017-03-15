@@ -1,6 +1,7 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {AuthService} from "./service/auth.service";
-import {SharedService} from "./service/shared.service";
+import {Component, ViewEncapsulation, OnInit} from '@angular/core';
+import {AuthService} from "./services/auth.service";
+import {SharedService} from "./services/shared.service";
+import {LoggingService} from "./services/logging.service";
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,13 @@ import {SharedService} from "./service/shared.service";
   encapsulation: ViewEncapsulation.Emulated
 
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
-  constructor(private authService:AuthService, private sharedService:SharedService){
-    console.log("Constructing AppComponent");
+  constructor(private loggingService:LoggingService, private authService:AuthService, private sharedService:SharedService){
+    this.loggingService["info"](["AppComponent Constructed"]);
   }
 
-  title = 'app works!';
-
+  ngOnInit(): void {
+    this.loggingService["info"](["AppComponent Initialized"]);
+  }
 }

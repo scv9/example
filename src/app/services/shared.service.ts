@@ -10,7 +10,7 @@ import {UserService} from "./user.service";
 
 
 /**
- * Shared service that shares single instance among components.
+ * Shared services that shares single instance among components.
  */
 @Injectable()
 export class SharedService{

@@ -4,8 +4,8 @@ import {RegistrationComponent} from "./registration/registration.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RequestOptions, Http} from "@angular/http";
 import {AuthConfig, AuthHttp} from "angular2-jwt";
-import {AuthService} from "../../service/auth.service";
-import {UserService} from "../../service/user.service";
+import {AuthService} from "../../services/auth.service";
+import {UserService} from "../../services/user.service";
 
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
