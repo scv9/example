@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {UserService} from "../../service/user.service";
+import {SharedService} from "../../service/shared.service";
 
 
 @Component({
@@ -9,13 +10,13 @@ import {UserService} from "../../service/user.service";
 })
 export class NavigationComponent {
 
-  foods = [
+  /*foods = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
+  ];*/
 
-  constructor(public userService:UserService) {
+  constructor(public sharedService:UserService) {
     console.log("Constructing NavigationComponent");
   }
 

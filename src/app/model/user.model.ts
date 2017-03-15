@@ -4,4 +4,20 @@ export class User {
   username: string;
   authorities: Array<string>;
 
+  loggedIn : boolean = false;
+
+
+
+  public login():void{
+    this.loggedIn = true;
+  }
+
+  public logout():void{
+    this.loggedIn = false;
+  }
+
+  public isLoggedIn():boolean{
+    return this.loggedIn;
+  }
+
 }

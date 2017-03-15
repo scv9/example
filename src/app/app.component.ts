@@ -1,5 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {AuthService} from "./service/auth.service";
+import {SharedService} from "./service/shared.service";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import {AuthService} from "./service/auth.service";
 })
 export class AppComponent {
 
-  constructor(private authService:AuthService){
+  constructor(private authService:AuthService, private sharedService:SharedService){
     console.log("Constructing AppComponent");
   }
 

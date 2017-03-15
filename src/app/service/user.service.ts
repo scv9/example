@@ -11,7 +11,6 @@ export class UserService {
 
   http:AuthHttp;
   private userDetailsURL = Commons.baseURL + "user";
-  public isLoggedIn : boolean = false;
 
   user:User;
 
@@ -22,17 +21,18 @@ export class UserService {
     this.user = new User();
     this.authService.auth$.subscribe(()=>{
       this.http = this.injector.get(AuthHttp);
-      this.getUserDetails$().subscribe(value => console.log(value));
+      this.retrieveUserDetails$().subscribe(response => {
+        this.setUserDetails(response);
+      });
 
     });
   }
 
-  getUserDetails$(){
+  retrieveUserDetails$(){
     return this.http.get(this.userDetailsURL)// ...and calling .json() on the response to return data
       .map((response:Response) => {
         console.log(`getUserDetails Success`);
-        this.setUserDetails(response.json());
-        this.emitter.emit(response.json());
+        return response.json();
       })
       //...errors if any
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
@@ -40,22 +40,19 @@ export class UserService {
 
   setUserDetails(response:User){
     console.log(`Setting UserDetails`);
-    this.user.username = response.username;
+    this.user = response;
+    this.user.loggedIn = true;
+    /*this.user.username = response.username;
     this.user.authorities = response.authorities;
-    console.log(`UserDetails Set ${this.user.username}`);
-  }
-
-  login():void{
-    console.log(`Processing User login`);
-    this.isLoggedIn = true;
-    console.log(`User Successfully logged in`);
+    console.log(`UserDetails Set ${this.user.username}`);*/
+    this.emitter.emit(this.user);
   }
 
   logout():void{
 
     console.log(`Processing logout`);
     this.setUserDetails(new User);
-    this.isLoggedIn = false;
+    this.user.logout();
     this.authService.logout();
   }
 

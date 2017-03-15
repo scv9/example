@@ -14,6 +14,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {JwtHelper} from "angular2-jwt";
 import {TokenUtil} from "./components/commons/utils/tokenUtil";
 import { ListAdapterComponent } from './components/list-adapter/list-adapter.component';
+import {SharedService} from "./service/shared.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ListAdapterComponent } from './components/list-adapter/list-adapter.com
   providers: [
     AuthGuard,
     JwtHelper,
-    TokenUtil
+    TokenUtil,
+    SharedService
   ],
   bootstrap: [AppComponent]
 })

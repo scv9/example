@@ -2,7 +2,7 @@
   <img src="../images/user.jpg" class="reports-avatar">
   <div class="reports-avatar-dropdown">
     <!--<span>hello@example.com</span>-->
-    <span>{{userService.user.username}}</span>
+    <span>{{sharedService.user.username}}</span>
     <div class="mdl-layout-spacer"></div>
     <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
       <i class="material-icons" role="presentation">arrow_drop_down</i>
@@ -17,7 +17,7 @@
 </header>
 
 <!-- If user is Authenticated -->
-<nav class="mdl-navigation" *ngIf="userService.isLoggedIn">
+<nav class="mdl-navigation" *ngIf="sharedService.user.loggedIn">
   <a class="mdl-navigation__link" [routerLink]="['']">Home</a>
   <a class="mdl-navigation__link" [routerLink]="['dashboard']">Dashboard</a>
   <a class="mdl-navigation__link" href="">Users</a>
@@ -29,7 +29,7 @@
 
 
 <!-- If user is NOT Authenticated -->
-<nav class="mdl-navigation" *ngIf="!userService.isLoggedIn">
+<nav class="mdl-navigation" *ngIf="!sharedService.user.loggedIn">
   <a class="mdl-navigation__link" [routerLink]="['']">Home</a>
   <a class="mdl-navigation__link" [routerLink]="['dashboard']">Dashboard</a>
   <a class="mdl-navigation__link" href="">Wear</a>
