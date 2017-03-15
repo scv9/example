@@ -10,7 +10,6 @@ export class DashboardComponent {
 
   constructor(private userService:UserService) {
     console.log("Constructing DashboardComponent");
-    console.log(this.userService.user);
   }
 
 

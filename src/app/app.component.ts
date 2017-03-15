@@ -19,5 +19,9 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.loggingService["info"](["AppComponent Initialized"]);
     this.authService.tokenUtil.setToken(localStorage.getItem('token'));
+    this.authService.auth$.subscribe(()=>{
+      this.loggingService["info"](["Auth COMPLETED"]);
+      this.sharedService.retrieveUser();
+    });
   }
 }

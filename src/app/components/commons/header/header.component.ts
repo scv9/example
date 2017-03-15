@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {UserService} from "../../../services/user.service";
+import {SharedService} from "../../../services/shared.service";
 
 @Component({
   selector: 'app-header',
@@ -8,6 +8,6 @@ import {UserService} from "../../../services/user.service";
 })
 export class HeaderComponent {
 
-  constructor(private userService:UserService) {console.log(`Constructing HeaderComponent`); }
+  constructor(private sharedService:SharedService) {console.log(`Constructing HeaderComponent`); }
 
 }

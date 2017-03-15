@@ -10,24 +10,13 @@ import {LoggingService} from "./logging.service";
 @Injectable()
 export class UserService {
 
-  http:AuthHttp;
   private userDetailsURL = Commons.baseURL + "user";
 
-  user:User;
 
-  emitter : EventEmitter<User> = new EventEmitter();
-
-  constructor(private loggingService:LoggingService, private authService:AuthService, private injector:Injector){
+  constructor(private loggingService:LoggingService, private http:AuthHttp){
 
     this.loggingService["info"](["UserService Constructed"]);
-    this.user = new User();
-    this.authService.auth$.subscribe(()=>{
-      this.http = this.injector.get(AuthHttp);
-      this.retrieveUserDetails$().subscribe(response => {
-        this.setUserDetails(response);
-      });
 
-    });
   }
 
   retrieveUserDetails$(){
@@ -39,24 +28,4 @@ export class UserService {
       //...errors if any
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
-
-  setUserDetails(response:User){
-    console.log(`Setting UserDetails`);
-    this.user = response;
-    this.user.loggedIn = true;
-    /*this.user.username = response.username;
-    this.user.authorities = response.authorities;
-    console.log(`UserDetails Set ${this.user.username}`);*/
-    this.emitter.emit(this.user);
-  }
-
-  logout():void{
-
-    console.log(`Processing logout`);
-    this.setUserDetails(new User);
-    this.user.logout();
-    this.authService.logout();
-  }
-
-
 }

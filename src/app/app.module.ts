@@ -17,6 +17,7 @@ import {SharedService} from "./services/shared.service";
 import {LoggingService} from "./services/logging.service";
 import {UserService} from "./services/user.service";
 import {RequestOptions, Http} from "@angular/http";
+import {OrganizationService} from "./services/organization.service";
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   console.warn("authHttpServiceFactory created");
@@ -53,6 +54,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     TokenUtil,
     SharedService,
     UserService,
+    OrganizationService,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,

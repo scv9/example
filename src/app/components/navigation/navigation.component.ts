@@ -16,7 +16,7 @@ export class NavigationComponent {
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];*/
 
-  constructor(public sharedService:UserService) {
+  constructor(public sharedService:SharedService) {
     console.log("Constructing NavigationComponent");
   }
 
